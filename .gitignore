@@ -1,0 +1,56 @@
+#  Entorno virtual
+venv/
+env/
+ENV/
+
+#  Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+#  Base de datos
+db.sqlite3
+
+# Variables de entorno
+.env
+
+#  Logs
+*.log
+
+#  Archivos temporales
+*.tmp
+*.bak
+
+#  Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# IDEs / Editores
+.vscode/
+.idea/
+
+#  Archivos de distribución
+build/
+dist/
+*.egg-info/
+
+#  Claves privadas
+*.pem
+*.key
+
+# 📡 Archivos de configuración local
+local_settings.py
+
+#  Archivos de Channels (si usas redis/local)
+*.sock
+
+#  Archivos de migraciones compiladas (opcional)
+*.mo
+
+#  Coverage / testing
+htmlcov/
+.coverage
+.pytest_cache/
+
