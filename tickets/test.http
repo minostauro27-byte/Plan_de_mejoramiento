@@ -1,0 +1,84 @@
+
+###Crear Usuario con rol base 
+POST http://127.0.0.1:8000/api/register/
+Content-Type: application/json
+
+{
+  "username": "maikoll1",
+  "password": "123456",
+  "rol": "usuario_base"
+}
+
+
+### Crear Usuario con rol tecnico 
+POST http://127.0.0.1:8000/api/register/
+Content-Type: application/json
+
+{
+  "username": "Pepe",
+  "password": "123456",
+  "rol": "tecnico"
+}
+
+
+### Inicio de sesion (rol=base)
+POST http://127.0.0.1:8000/api/login/
+Content-Type: application/json
+
+{
+  "username": "maikoll",
+  "password": "123456"
+}
+ 
+### Inicio de sesion(rol=tecnico)
+POST http://127.0.0.1:8000/api/login/
+Content-Type: application/json
+
+{
+  "username": "Pepe",
+  "password": "123456"
+}
+
+
+###Crear Ticket usuario base
+POST http://127.0.0.1:8000/api/tickets/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MTAwNzIxLCJpYXQiOjE3NzYwOTM1MjEsImp0aSI6IjY2MDNhOTM1MzIwZjQzZDJiY2Y2YjUyMjA0ZjE4N2RlIiwidXNlcl9pZCI6IjMifQ.Qjpv__iot5_z9CxMMqnehql_5oY5qeM542V8xLafN8Q
+Content-Type: application/json
+
+{
+  "titulo": "Monitor roto",
+  "descripcion": "El monitor tiene la pantalla quebrada ",
+  "numero_equipo": "PC-10"
+}
+
+### Listar tickets usuario_base(Solo debe ver los suyos)
+GET http://127.0.0.1:8000/api/tickets/list/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MTAwNzIxLCJpYXQiOjE3NzYwOTM1MjEsImp0aSI6IjY2MDNhOTM1MzIwZjQzZDJiY2Y2YjUyMjA0ZjE4N2RlIiwidXNlcl9pZCI6IjMifQ.Qjpv__iot5_z9CxMMqnehql_5oY5qeM542V8xLafN8Q
+
+
+###Listar tickets tecnico(Debe poder ver todos)
+GET http://127.0.0.1:8000/api/tickets/list/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MDk5NTExLCJpYXQiOjE3NzYwOTIzMTEsImp0aSI6IjE0MTcyNjczZWY1YjQwOWU4MDc2YWY0MzdkMzhiNWZhIiwidXNlcl9pZCI6IjQifQ.wfnqN47X4g_DM5_yMCMws14kvrsnL7u8JrSv1wbhLEU
+
+
+### Usuario intenta cambiar el estado (Debe fallar porque su rol no se lo permite )
+PUT http://127.0.0.1:8000/api/tickets/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MDk5NTgxLCJpYXQiOjE3NzYwOTIzODEsImp0aSI6IjE5NTY2OTk3OWE1MDRlNzc5ZDhlYTBjNjQ4Y2U3ZWJhIiwidXNlcl9pZCI6IjUifQ.jKiSpKWaBjVW7rihFsSXip1Kp1kAo89Dn_wq5ONVxcM
+
+{
+  "estado": "resuelto"
+}
+
+
+### Tecnico actualiza el estado(Debe funcionar ya que es el rol correcto
+PUT http://127.0.0.1:8000/api/tickets/3/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MDk5NTExLCJpYXQiOjE3NzYwOTIzMTEsImp0aSI6IjE0MTcyNjczZWY1YjQwOWU4MDc2YWY0MzdkMzhiNWZhIiwidXNlcl9pZCI6IjQifQ.wfnqN47X4g_DM5_yMCMws14kvrsnL7u8JrSv1wbhLEU
+Content-Type: application/json
+
+{
+  "estado": "resuelto"
+}
+
+### Ver estadisticas 
+GET  http://127.0.0.1:8000/api/tickets/estadisticas/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2MDk5NTExLCJpYXQiOjE3NzYwOTIzMTEsImp0aSI6IjE0MTcyNjczZWY1YjQwOWU4MDc2YWY0MzdkMzhiNWZhIiwidXNlcl9pZCI6IjQifQ.wfnqN47X4g_DM5_yMCMws14kvrsnL7u8JrSv1wbhLEU
