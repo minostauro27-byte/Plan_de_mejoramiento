@@ -191,8 +191,5 @@ El sistema está construido siguiendo una arquitectura REST con separación de r
 
 ---
 
-## 📌 Notas finales
-
-* El sistema es 100% backend
-* No incluye frontend
-* Todas las pruebas se realizan mediante herramientas API
+## video 
+[video](https://drive.google.com/file/d/1DgOLqHkEvmgLxcpXpz0jruKUv2vJAax5/view?usp=sharing)
